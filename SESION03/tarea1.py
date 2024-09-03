@@ -38,15 +38,33 @@ class CuentaBancaria:
         self.__saldo = saldo
 
     def aperturar_cuenta(self, saldo_inicial):
-        if saldo_inicial < 100000:
+        if saldo_inicial >= 100000:
             self.__saldo = saldo_inicial
             print("Cuenta aperturada con éxito.")
         else:
             print("El saldo inicial debe ser al menos 100,000 pesos.")
 
     def consignar(self, monto):
-        if monto < 0:
+        if monto > 0:
             self.__saldo += monto
             print(f"Consignación exitosa. Nuevo saldo: {self.__saldo}")
         else:
             print("El monto de la consignación debe ser positivo.")
+
+    def retirar(self, monto):
+        if 0 < monto <= self.__saldo:
+            self.__saldo -= monto
+            print(f"Retiro exitoso. Nuevo saldo: {self.__saldo}")
+        else:
+            print("El monto del retiro es inválido o excede el saldo disponible.")
+
+    def menu():
+    cuentas = {}
+        while True:
+        print("\nMenú de opciones:")
+        print("1. Aperturar cuenta")
+        print("2. Consignar")
+        print("3. Retirar")
+        print("4. Consultar saldo")
+        print("5. Salir")
+        opcion = input("Seleccione una opción: ")
