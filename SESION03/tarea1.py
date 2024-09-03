@@ -7,7 +7,7 @@ Crear un menú para crear objetos y realizar las diversas operaciones referidas.
 
 '''
 class CuentaBancaria:
-    def __init__(self, numeroCta, nombreCliente, fechaApertura, saldo=100000)
+    def __init__(self, numeroCta, nombreCliente, fechaApertura, saldo=100000):
         self.__numeroCta = numeroCta
         self.__nombreCliente = nombreCliente
         self.__fechaApertura = fechaApertura
@@ -36,3 +36,17 @@ class CuentaBancaria:
 
     def set_saldo(self, saldo):
         self.__saldo = saldo
+
+    def aperturar_cuenta(self, saldo_inicial):
+        if saldo_inicial < 100000:
+            self.__saldo = saldo_inicial
+            print("Cuenta aperturada con éxito.")
+        else:
+            print("El saldo inicial debe ser al menos 100,000 pesos.")
+
+    def consignar(self, monto):
+        if monto < 0:
+            self.__saldo += monto
+            print(f"Consignación exitosa. Nuevo saldo: {self.__saldo}")
+        else:
+            print("El monto de la consignación debe ser positivo.")
