@@ -68,3 +68,43 @@ class CuentaBancaria:
         print("4. Consultar saldo")
         print("5. Salir")
         opcion = input("Seleccione una opción: ")
+
+    if opcion == "1":
+        numeroCta = input("Ingrese el número de cuenta: ")
+        nombreCliente = input("Ingrese el nombre del cliente: ")
+        fechaApertura = input("Ingrese la fecha de apertura (DD/MM/AAAA): ")
+        saldo_inicial = input("Ingrese el saldo inicial: ")
+        cuenta = CuentaBancaria(numeroCta, nombreCliente, fechaApertura)
+        cuenta.aperturar_cuenta(float(saldo_inicial))
+        cuentas[numeroCta] = cuenta
+
+    elif opcion == "2":
+        numeroCta = input("Ingrese el número de cuenta: ")
+            if numeroCta in cuentas:
+                monto = input("Ingrese el monto a consignar: ")
+                cuentas[numeroCta].consignar(float(monto))
+            else:
+                print("Cuenta no encontrada.")
+
+    elif opcion == "3":
+        numeroCta = input("Ingrese el número de cuenta: ")
+            if numeroCta in cuentas:
+                monto = input("Ingrese el monto a retirar: ")
+                cuentas[numeroCta].retirar(float(monto))
+            else:
+                print("Cuenta no encontrada.")
+
+    elif opcion == "4":
+        numeroCta = input("Ingrese el número de cuenta: ")
+            if numeroCta in cuentas:
+                print(f"Saldo actual: {cuentas[numeroCta].get_saldo()}")
+            else:
+                print("Cuenta no encontrada.")
+
+    elif opcion == "5":
+        print("Saliendo del programa.")
+            break
+
+    else:
+        print("Opción no válida. Intente de nuevo.")
+menu()
