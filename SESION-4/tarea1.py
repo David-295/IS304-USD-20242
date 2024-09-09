@@ -15,5 +15,18 @@
 import re
 
 def es_expresion_correcta(expresion):
-    patron = r'^(-?\d+(\.\d+)?)(\s*[\+\-\*/%]\s*(-?\d+(\.\d+)?))*$'
-    return bool(re.match(patron, expresion))
+    patron = r'^(-?\d+(\.\d+)?)(\s*[-+*/]\s*(-?\d+(\.\d+)?))*$'
+    
+    if re.match(patron, expresion):
+        if '--' in expresion:
+            return False
+        return True
+    else:
+        return False
+
+expresion_usuario = input("Por favor, ingresa una expresión matemática: ")
+
+if es_expresion_correcta(expresion_usuario):
+    print("La expresión es correcta.")
+else:
+    print("La expresión es incorrecta.")
